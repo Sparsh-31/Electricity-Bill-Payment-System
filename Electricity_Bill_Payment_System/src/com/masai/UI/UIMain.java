@@ -12,7 +12,7 @@ public class UIMain {
 		         + "|   Press 1 for Admin Login      |\n"
 		         + "|   Press 2 for Consumer Loging  |\n"
 		         + "|                                |\n"
-		         + "+--------------------------------+");
+		         + "+--------------------------------+"+ConsoleColor.RESET);
 	}
 	
 	public static void main(String[] args) {
