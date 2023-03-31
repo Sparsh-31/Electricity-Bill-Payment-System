@@ -49,7 +49,7 @@ public class AdminDAO implements AdminInterface {
 				
 				while(rs.next()) {
 					
-					list.add(new ConsumerBinClass(rs.getInt("consumer_id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("username"), rs.getString("password"), rs.getString("address"), rs.getString("mobile_number"), rs.getString("email"), rs.getInt("is_active")));
+					list.add(new ConsumerBinClass(rs.getString("first_name"), rs.getString("last_name"), rs.getString("username"), rs.getString("password"), rs.getString("address"), rs.getString("mobile_number"), rs.getString("email")));
 					
 				}
 				return list;

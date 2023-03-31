@@ -12,9 +12,20 @@ public class ConsumerBinClass {
 	private String email;
 	private int is_active;
 	
-	public ConsumerBinClass(int consumer_id, String first_name, String last_name, String username, String password,
-			String address, String mobile_number, String email, int is_active) {
-		this.consumer_id = consumer_id;
+//	public ConsumerBinClass(String first_name, String last_name, String username, String password,
+//			String address, String mobile_number, String email, int is_active) {
+//		this.first_name = first_name;
+//		this.last_name = last_name;
+//		this.username = username;
+//		this.password = password;
+//		this.address = address;
+//		this.mobile_number = mobile_number;
+//		this.email = email;
+//		this.is_active = is_active;
+//	}
+
+	public ConsumerBinClass(String first_name, String last_name, String username, String password,
+			String address, String mobile_number, String email) {
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.username = username;
@@ -22,9 +33,8 @@ public class ConsumerBinClass {
 		this.address = address;
 		this.mobile_number = mobile_number;
 		this.email = email;
-		this.is_active = is_active;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Consumer_id: " + consumer_id + " Name: " + first_name +" "+ last_name + " username: " + username + " address: " + address+ "  mobile_number: " + mobile_number + " email: " + email + " is_active: " + is_active ;
