@@ -7,12 +7,12 @@ import com.masai.ConsoleColors.ConsoleColor;
 public class UIMain {
     
 	static void displaylogin() {
-		System.out.println(ConsoleColor.LIGHT_GREEN_BACKGROUND+ConsoleColor.PURPLE_BOLD_BRIGHT+"+--------------------------------+\n"
-		         + "|   Press 0 to Exit              |\n"
-		         + "|   Press 1 for Admin Login      |\n"
-		         + "|   Press 2 for Consumer Loging  |\n"
-		         + "|                                |\n"
-		         + "+--------------------------------+");
+		System.out.println(ConsoleColor.LIGHT_GREEN_BACKGROUND+ConsoleColor.PURPLE_BOLD_BRIGHT+"+---------------------------------------+\n"
+		         + "|   Press 0 to Exit                     |\n"
+		         + "|   Press 1 for Admin Login             |\n"
+		         + "|   Press 2 for Consumer Loging/SignUp  |\n"
+		         + "|                                       |\n"
+		         + "+---------------------------------------+"+ConsoleColor.RESET);
 	}
 	
 	public static void main(String[] args) {
@@ -31,7 +31,7 @@ public class UIMain {
 				break;
 			}
 			case 2: {
-				
+				ConsumerUI.consumerMain(sc);
 				break;
 			}
 			case 0: {
