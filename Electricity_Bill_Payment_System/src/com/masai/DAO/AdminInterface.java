@@ -5,6 +5,7 @@ import java.util.List;
 import com.masai.DTO.BillBinClass;
 import com.masai.DTO.ConsumerBinClass;
 import com.masai.Exception.EmptySet;
+import com.masai.Exception.InputMisMatch;
 import com.masai.Exception.NoConsumerFound;
 import com.masai.Exception.WrongCredentials;
 
@@ -20,6 +21,6 @@ public interface AdminInterface {
 	
 	public void deleteConsumer(int cid) throws NoConsumerFound;
 	
-	
+	public void generateBill(BillBinClass bill) throws InputMisMatch;
 	
 }

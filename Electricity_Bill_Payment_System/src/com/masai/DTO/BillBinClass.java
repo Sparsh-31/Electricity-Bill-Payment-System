@@ -6,6 +6,7 @@ public class BillBinClass {
 
 	private int bill_No;
 	private double amount;
+	private int consumer_id;
 	private LocalDate fromDate;
 	private LocalDate toDate;
 	private String name;
@@ -17,6 +18,31 @@ public class BillBinClass {
 		this.toDate = toDate;
 		this.name = name;
 	}
+	
+	
+	
+	public BillBinClass(int consumer_id, double amount, LocalDate fromDate, LocalDate toDate) {
+		super();
+		this.consumer_id = consumer_id ;
+		this.amount = amount;
+		this.fromDate = fromDate;
+		this.toDate = toDate;
+	}
+
+
+
+	public int getConsumer_id() {
+		return consumer_id;
+	}
+
+
+
+	public void setConsumer_id(int consumer_id) {
+		this.consumer_id = consumer_id;
+	}
+
+
+
 	public int getBill_No() {
 		return bill_No;
 	}

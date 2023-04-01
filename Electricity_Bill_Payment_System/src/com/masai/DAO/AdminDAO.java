@@ -1,6 +1,7 @@
 package com.masai.DAO;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,6 +13,7 @@ import java.util.List;
 import com.masai.DTO.BillBinClass;
 import com.masai.DTO.ConsumerBinClass;
 import com.masai.Exception.EmptySet;
+import com.masai.Exception.InputMisMatch;
 import com.masai.Exception.NoConsumerFound;
 import com.masai.Exception.WrongCredentials;
 import com.masai.utils.DBUtils;
@@ -126,7 +128,7 @@ public class AdminDAO implements AdminInterface {
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
-			throw new EmptySet("No Bills allotted to this Consumer");
+			throw new EmptySet("No Bills allotted to this Consumer"+e.getMessage());
 		}
 	}
 
@@ -151,6 +153,34 @@ public class AdminDAO implements AdminInterface {
 		
 		
 //		PreparedStatement pStatement = con.prepareStatement(query)
+	}
+
+	@Override
+	public void generateBill(BillBinClass bill) throws InputMisMatch {
+		// TODO Auto-generated method stub
+		
+		double amt = bill.getAmount()*10;
+		amt = amt+((amt*2.5)/100);
+		
+		Connection con = null;
+		try {
+			con = DBUtils.linkBetween();
+			
+			String query = "Insert into bill(consumer_id,amount,bill_from,bill_to) Values(?,?,?,?)";
+			PreparedStatement pst = con.prepareStatement(query);
+			
+			pst.setInt(1, bill.getConsumer_id());
+			pst.setDouble(2, amt);
+			pst.setDate(3, Date.valueOf(bill.getFromDate()));
+			pst.setDate(4, Date.valueOf(bill.getToDate()));
+			
+			pst.executeUpdate();
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			throw new InputMisMatch("Input mis-match "+e.getMessage());
+		}
+		
 	} 
 	
 }
