@@ -1,5 +1,6 @@
 package com.masai.UI;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
@@ -9,6 +10,7 @@ import com.masai.DAO.AdminInterface;
 import com.masai.DTO.BillBinClass;
 import com.masai.DTO.ConsumerBinClass;
 import com.masai.Exception.EmptySet;
+import com.masai.Exception.InputMisMatch;
 import com.masai.Exception.NoConsumerFound;
 import com.masai.Exception.WrongCredentials;
 
@@ -23,6 +25,7 @@ public class AdminUI {
 				  +"| ->  Press 3 to View all the bills.                                |\n"
 				  +"| ->  Press 4 to View all bills paid and pending                    |\n"
 				  +"| ->  Press 5 to Delete consumer                                    |\n"
+				  +"| ->  Press 6 to generate bill                                      |\n"
 				  +"|                                                                   |\n"
 				  +"+-------------------------------------------------------------------+"+ConsoleColor.RESET);
 	}
@@ -119,6 +122,28 @@ public class AdminUI {
 		
 	}
 	
+	public static void generateBill(Scanner sc) {
+		System.out.println("Enter Consumer-ID");
+		int cId = sc.nextInt();
+		System.out.println("Enter Unit Consume");
+		int unit = sc.nextInt();
+		System.out.println("Enter the Date of Bill in From(YYYY-MM-DD) To(YYYY-MM-DD)");
+		LocalDate fDate = LocalDate.parse(sc.next());
+		LocalDate toDate = LocalDate.parse(sc.next());
+		
+		BillBinClass bill = new BillBinClass(cId, unit, fDate, toDate);
+		
+		AdminInterface ai = new AdminDAO();
+		
+		try {
+			ai.generateBill(bill);
+			System.out.println("Bill generated successfully");
+		} catch (InputMisMatch e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+	}
+	
 	public static void adminFunctionalities(Scanner sc) {
 		System.out.println("Go ahead you are admin now");
 		int choice = 0;
@@ -145,6 +170,10 @@ public class AdminUI {
 			}
 			case 5: {
 				deleteConsumer(sc);
+				break;
+			}
+			case 6: {
+				generateBill(sc);
 				break;
 			}
 			case 0: {
