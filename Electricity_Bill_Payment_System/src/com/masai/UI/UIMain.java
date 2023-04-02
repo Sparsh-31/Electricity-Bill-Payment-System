@@ -22,8 +22,8 @@ public class UIMain {
 		int choice = 0;
 			
 		do {
-			System.out.println("Enter Your choice");
 			displaylogin();
+			System.out.println(ConsoleColor.BLACK+ConsoleColor.CYAN_BACKGROUND_BRIGHT+"Enter Your choice");
 			choice = sc.nextInt();
 			switch (choice) {
 			case 1: {
@@ -40,10 +40,9 @@ public class UIMain {
 			}
 			default:
 				System.out.println("Invalid choice");
+				break;
 			}
 		}while(choice != 0);
-		
-		
 	}
 
 }

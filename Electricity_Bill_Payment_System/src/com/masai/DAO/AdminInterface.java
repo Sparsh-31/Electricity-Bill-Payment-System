@@ -23,4 +23,6 @@ public interface AdminInterface {
 	
 	public void generateBill(BillBinClass bill) throws InputMisMatch;
 	
+	public List<BillBinClass> paidAndPandigBills(int status) throws EmptySet;
+	
 }
