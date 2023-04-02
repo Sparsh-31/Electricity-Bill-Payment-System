@@ -12,6 +12,16 @@ public class ConsumerBinClass {
 	private String email;
 	private int is_active;
 	
+	private boolean valid;
+	
+	private String name;
+	
+	public ConsumerBinClass(int consumer_id, boolean valid, String name) {
+			this.consumer_id = consumer_id;
+			this.valid = valid;
+			this.name = name;
+	}
+
 //	public ConsumerBinClass(String first_name, String last_name, String username, String password,
 //			String address, String mobile_number, String email, int is_active) {
 //		this.first_name = first_name;
@@ -24,6 +34,34 @@ public class ConsumerBinClass {
 //		this.is_active = is_active;
 //	}
 
+	public boolean isValid() {
+		return valid;
+	}
+
+	public void setValid(boolean valid) {
+		this.valid = valid;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public ConsumerBinClass(int consumer_id, String first_name, String last_name, String username, String password,
+			String address, String mobile_number, String email) {
+		this.consumer_id = consumer_id;
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.username = username;
+		this.password = password;
+		this.address = address;
+		this.mobile_number = mobile_number;
+		this.email = email;
+	}
+	
 	public ConsumerBinClass(String first_name, String last_name, String username, String password,
 			String address, String mobile_number, String email) {
 		this.first_name = first_name;

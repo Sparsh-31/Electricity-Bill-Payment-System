@@ -17,7 +17,7 @@ import com.masai.Exception.WrongCredentials;
 public class AdminUI {
 
 	public static void displayAdminFunctionalities() {
-		System.out.println(ConsoleColor.CYAN_BACKGROUND_BRIGHT+ConsoleColor.RED_BOLD_BRIGHT+"+-------------------------------------------------------------------+\n"
+		System.out.println(ConsoleColor.LIGHT_GREEN_BACKGROUND+ConsoleColor.PURPLE_BOLD_BRIGHT+"+-------------------------------------------------------------------+\n"
 		          +"|                                                                   |\n"
 				  +"| ->  Press 0 to Log-Out Admin.                                     |\n"
 				  +"| ->  Press 1 to Display All consumers.                             |\n"
@@ -45,7 +45,7 @@ public class AdminUI {
 			}
 		} catch (WrongCredentials e) {
 			// TODO Auto-generated catch block
-			System.out.println(e.getMessage());
+			System.out.println(ConsoleColor.RED+e.getMessage()+ConsoleColor.RESET);
 		}
 		
 	}
@@ -65,7 +65,7 @@ public class AdminUI {
 			
 		} catch (EmptySet e) {
 			// TODO Auto-generated catch block
-			System.out.println(e.getMessage());
+			System.out.println(ConsoleColor.RED+e.getMessage()+ConsoleColor.RESET);
 		}
 	}
 	
@@ -85,7 +85,7 @@ public class AdminUI {
 			}
 		} catch (EmptySet e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(ConsoleColor.RED+e.getMessage()+ConsoleColor.RESET);
 		}
 	}
 	
@@ -117,7 +117,7 @@ public class AdminUI {
 			System.out.println("Consumer record is now in active");
 		} catch (NoConsumerFound e) {
 			// TODO Auto-generated catch block
-			System.out.println(e.getMessage());
+			System.out.println(ConsoleColor.RED+e.getMessage()+ConsoleColor.RESET);
 		}
 		
 	}
@@ -140,16 +140,48 @@ public class AdminUI {
 			System.out.println("Bill generated successfully");
 		} catch (InputMisMatch e) {
 			// TODO Auto-generated catch block
-			System.out.println(e.getMessage());
+			System.out.println(ConsoleColor.RED+e.getMessage()+ConsoleColor.RESET);
 		}
 	}
 	
+	public static void paidAndPandingBills() {
+		
+		AdminInterface ai = new AdminDAO();
+		
+		try {
+			List<BillBinClass> list1 =  ai.paidAndPandigBills(0);
+			System.out.println("----------Pending Bills----------");
+			for(int i=0;i<list1.size();i++) {
+				if(i%2 == 0) System.out.println(ConsoleColor.LIGHT_BLUE+ConsoleColor.RED_BACKGROUND+list1.get(i).toString()+ConsoleColor.RESET);
+				
+				else System.out.println(ConsoleColor.RED_BACKGROUND_BRIGHT+ConsoleColor.LIGHT_BLUE+list1.get(i).toString()+ConsoleColor.RESET);
+			}
+			
+			List<BillBinClass> list2 =  ai.paidAndPandigBills(1);
+			
+			System.out.println();
+			System.out.println("----------Paid Bills----------");
+			for(int i=0;i<list2.size();i++) {
+				if(i%2 == 0) System.out.println(ConsoleColor.LIGHT_BLUE+ConsoleColor.RED_BACKGROUND+list2.get(i).toString()+ConsoleColor.RESET);
+				
+				else System.out.println(ConsoleColor.RED_BACKGROUND_BRIGHT+ConsoleColor.LIGHT_BLUE+list2.get(i).toString()+ConsoleColor.RESET);
+			}
+			
+		} catch (EmptySet e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
 	public static void adminFunctionalities(Scanner sc) {
-		System.out.println("Go ahead you are admin now");
+		System.out.println(ConsoleColor.GREEN_BOLD_BRIGHT+"Go ahead you are admin now"+ConsoleColor.RESET);
 		int choice = 0;
 		
 		do {
 			displayAdminFunctionalities();
+			System.out.println(ConsoleColor.BLACK+ConsoleColor.CYAN_BACKGROUND_BRIGHT+"Enter Your choice");
 			choice = sc.nextInt();
 			switch (choice) {
 			case 1: {
@@ -165,7 +197,7 @@ public class AdminUI {
 				break;
 			}
 			case 4: {
-				
+				paidAndPandingBills();
 				break;
 			}
 			case 5: {
@@ -177,7 +209,7 @@ public class AdminUI {
 				break;
 			}
 			case 0: {
-				System.out.println("Admin Log-Out Successful");
+				System.out.println(ConsoleColor.RED_BOLD+"Admin Log-Out Successful");
 				break;
 			}
 			default:

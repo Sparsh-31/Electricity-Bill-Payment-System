@@ -51,12 +51,11 @@ public class AdminDAO implements AdminInterface {
 				
 				while(rs.next()) {
 					
-					list.add(new ConsumerBinClass(rs.getString("first_name"), rs.getString("last_name"), rs.getString("username"), rs.getString("password"), rs.getString("address"), rs.getString("mobile_number"), rs.getString("email")));
+					list.add(new ConsumerBinClass(rs.getInt("consumer_id") ,rs.getString("first_name"), rs.getString("last_name"), rs.getString("username"), rs.getString("password"), rs.getString("address"), rs.getString("mobile_number"), rs.getString("email")));
 					
 				}
 				return list;
 			}
-			
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			throw new EmptySet("No consumer records founded");
@@ -181,6 +180,41 @@ public class AdminDAO implements AdminInterface {
 			throw new InputMisMatch("Input mis-match "+e.getMessage());
 		}
 		
+	}
+
+	@Override
+	public List<BillBinClass> paidAndPandigBills(int status) throws EmptySet {
+		// TODO Auto-generated method stub
+		Connection con = null;
+		
+		try {
+			con = DBUtils.linkBetween();
+			
+			String query = "Select bill_no,amount,bill_from,bill_to,first_name,last_name from bill b join consumer c on b.consumer_id = c.consumer_id where c.is_active = 1 and b.status = ?";
+			
+			PreparedStatement pst = con.prepareStatement(query);
+
+			pst.setInt(1, status);
+			
+			ResultSet rs = pst.executeQuery();
+			
+			if(DBUtils.checkIsEmptyOrNot(rs)) throw new EmptySet("No Bills allotted to this Consumer");
+			else {
+				List<BillBinClass> list = new ArrayList<>();
+				
+				while(rs.next()) {
+					list.add(new BillBinClass(rs.getInt("bill_no"), rs.getDouble("amount"), rs.getDate("bill_from").toLocalDate() , rs.getDate("bill_to").toLocalDate(), ""+rs.getString("first_name")+" "+rs.getString("last_name")));
+				}
+				
+				return list;
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
 	} 
 	
 }
