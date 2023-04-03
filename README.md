@@ -37,3 +37,7 @@ transaction_id (Primary key)<br>
 consumer_id (Foreign key)<br>
 amount<br>
 payment_date<br>
+
+<h2>ER-Diagram</h2><br>
+
+![ER-Diagram](https://user-images.githubusercontent.com/115460959/229427285-79dc16ec-0f74-4a03-88d0-774841cbda8e.png)
