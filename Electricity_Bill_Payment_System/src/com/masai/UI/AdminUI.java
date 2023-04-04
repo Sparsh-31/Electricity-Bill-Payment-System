@@ -60,7 +60,7 @@ public class AdminUI {
 			for(int i=0;i<list.size();i++) {
 				if(i%2 == 0) System.out.println(ConsoleColor.WHITE+ConsoleColor.BLACK_BACKGROUND+list.get(i).toString());
 				
-				else System.out.println(ConsoleColor.RED+ConsoleColor.BLACK_BACKGROUND_BRIGHT+list.get(i).toString());
+				else System.out.println(ConsoleColor.WHITE+ConsoleColor.BLACK_BACKGROUND_BRIGHT+list.get(i).toString());
 			}
 			
 		} catch (EmptySet e) {
@@ -176,7 +176,7 @@ public class AdminUI {
 	}
 	
 	public static void adminFunctionalities(Scanner sc) {
-		System.out.println(ConsoleColor.GREEN_BOLD_BRIGHT+"Go ahead you are admin now"+ConsoleColor.RESET);
+		System.out.println(ConsoleColor.WHITE_BACKGROUND_BRIGHT+ConsoleColor.BLACK_UNDERLINED+ConsoleColor.BLACK_ITALIC+"Go ahead you are admin now"+ConsoleColor.RESET);
 		int choice = 0;
 		
 		do {

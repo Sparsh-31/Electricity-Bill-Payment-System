@@ -94,7 +94,7 @@ public class ConsumerUI {
 			ConsumerBinClass consumer = ci.loginConsumer(userName, password);
 			
 			if(consumer.isValid()) {
-				System.out.println(ConsoleColor.BLUE_BACKGROUND_BRIGHT+ConsoleColor.WHITE+"Hey "+consumer.getName()+" Welcome\n"
+				System.out.println(ConsoleColor.WHITE+ConsoleColor.BLUE_BACKGROUND_BRIGHT+"Hey "+consumer.getName()+" Welcome\n"
 						+ "Please let me know how can I help you\n"
 						+ "Please Enter your choice");
 				consumerFunctionalities(sc,consumer.getConsumer_id());
