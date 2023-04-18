@@ -2,7 +2,7 @@
 
 Description:
 
-This is a simple Electricity Bill Payment System designed for the Electricity bill corporation of Rajasthan to provide an easy and efficient way for consumers to view and pay their monthly bills. The system allows consumers to view their bills, pay their bills, and view their transaction history. It also allows the administrator to view all the consumers, bills, paid and pending bills, and to delete a consumer.
+This is a simple Electricity Bill Payment System designed for the Electricity bill corporation to provide an easy and efficient way for consumers to view and pay their monthly bills. The system allows consumers to view their bills, pay their bills, and view their transaction history. It also allows the administrator to view all the consumers, bills, paid and pending bills, and to delete a consumer.
 
 Database:
 
